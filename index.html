@@ -27,8 +27,14 @@
               id="passInput"
               placeholder="Enter your password"
             />
-            <p class="text-danger d-none">All inputs are required</p>
-            <button class="btn w-100 btn-outline-primary mb-3">Login</button>
+            <p id="warnMsg" class="text-danger d-none">
+              All inputs are required
+            </p>
+
+            <button id="loginBtn" class="btn w-100 btn-outline-primary mb-3">
+              Login
+            </button>
+
             <p class="text-white">
               Dont have an account?
               <a class="text-white" href="pages/signup.html">Sign Up</a>
@@ -37,9 +43,12 @@
         </div>
       </div>
     </section>
+
     <!-- bootstrap js -->
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- main js -->
-    <script src="../js/index.js"></script>
+    <!-- common js -->
+    <script src="js/index.js"></script>
+    <!-- login js -->
+    <script src="../js/login.js"></script>
   </body>
 </html>
