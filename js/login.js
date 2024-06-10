@@ -23,7 +23,7 @@ loginBtn.addEventListener("click", function () {
             userLoginEmail.value.toLowerCase() &&
           usersList[i].password === userLoginPasswd.value
         ) {
-          window.location.href = "../pages/home.html";
+          window.location.href = "/Smart-login/pages/home.html";
           sessionStorage.setItem(
             "loggedUser",
             JSON.stringify({

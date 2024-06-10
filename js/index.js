@@ -10,11 +10,11 @@ if (loggedUser != null) {
 
   logOutBtn.addEventListener("click", function () {
     sessionStorage.removeItem("loggedUser");
-    window.location.href = "../index.html";
+    window.location.href = "/Smart-login/index.html";
   });
 } else {
-  if (window.location.pathname == "/pages/home.html") {
+  if (window.location.pathname == "/Smart-login/pages/home.html") {
     bodyHtml.classList.add("d-none");
-    window.location.href = "../pages/404.html";
+    window.location.href = "/Smart-login/pages/404.html";
   }
 }

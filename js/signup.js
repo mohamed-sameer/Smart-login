@@ -46,7 +46,7 @@ signUpBtn.addEventListener("click", function () {
         document
           .querySelector("#successMsg")
           .classList.replace("d-none", "d-block");
-        window.location.href = "../index.html";
+        window.location.href = "/Smart-login/index.html";
       } else {
         warnMsg.textContent = "Email is already used";
         warnMsg.classList.replace("d-none", "d-block");
