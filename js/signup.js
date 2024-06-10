@@ -9,14 +9,14 @@ var nameNPassRegex = /^[a-zA-Z0-9_. ]{3,}$/;
 var usersList = JSON.parse(localStorage.getItem("SmartLoginUsersList")) || [];
 
 function isSignUpFormEmpty() {
-  return !userNameInput.value && !userEmailInput.value && !userPasswdInput.value
-    ? false
-    : true;
+  return (
+    !userNameInput.value || !userEmailInput.value || !userPasswdInput.value
+  );
 }
 
 signUpBtn.addEventListener("click", function () {
   var isFormEmpty = isSignUpFormEmpty();
-  if (!isFormEmpty) {
+  if (isFormEmpty) {
     warnMsg.classList.replace("d-none", "d-block");
   } else {
     if (
@@ -30,27 +30,27 @@ signUpBtn.addEventListener("click", function () {
         password: userPasswdInput.value,
       };
 
-      if (usersList.length !== 0) {
-        for (var i = 0; i < usersList.length; i++) {
-          if (usersList[i].email === registerUser.email) {
-            console.log("email is the same use another email");
-          } else {
-            usersList.push(registerUser);
-            warnMsg.classList.replace("d-block", "d-none");
-            localStorage.setItem(
-              "SmartLoginUsersList",
-              JSON.stringify(usersList)
-            );
-            document
-              .querySelector("#successMsg")
-              .classList.replace("d-none", "d-block");
-            window.location.href = "../index.html";
-          }
+      var emailExist = false;
+
+      for (var i = 0; i < usersList.length; i++) {
+        if (registerUser.email === usersList[i].email) {
+          emailExist = true;
+          console.log("Email is already used");
+          break;
         }
-      } else {
+      }
+
+      if (!emailExist) {
         usersList.push(registerUser);
         warnMsg.classList.replace("d-block", "d-none");
         localStorage.setItem("SmartLoginUsersList", JSON.stringify(usersList));
+        document
+          .querySelector("#successMsg")
+          .classList.replace("d-none", "d-block");
+        window.location.href = "../index.html";
+      } else {
+        warnMsg.textContent = "Email is already used";
+        warnMsg.classList.replace("d-none", "d-block");
       }
     } else {
       document

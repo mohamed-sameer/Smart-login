@@ -2,11 +2,13 @@ var loginBtn = document.querySelector("#loginBtn");
 var signUpBtn = document.querySelector("#signUpBtn");
 var userLoginEmail = document.querySelector("#emailInput");
 var userLoginPasswd = document.querySelector("#passInput");
+var warnMsg = document.querySelector("#warnMsg");
 var usersList = JSON.parse(localStorage.getItem("SmartLoginUsersList")) || null;
 
 function isLoginFormEmpty() {
-  return !userLoginEmail.value && !userLoginPasswd.value ? false : true;
+  return !userLoginEmail.value && !userLoginPasswd.value;
 }
+
 loginBtn.addEventListener("click", function () {
   var isFormEmpty = isLoginFormEmpty();
   if (!isFormEmpty) {
@@ -22,10 +24,18 @@ loginBtn.addEventListener("click", function () {
           usersList[i].password === userLoginPasswd.value
         ) {
           window.location.href = "../pages/home.html";
+          sessionStorage.setItem(
+            "loggedUser",
+            JSON.stringify({
+              email: usersList[i].email,
+              name: usersList[i].name,
+            })
+          );
         }
       }
     } else {
-      console.log("exit loop");
+      warnMsg.textContent = "no user found with this email";
+      warnMsg.classList.toggle("d-none");
     }
   }
 });
