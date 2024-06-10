@@ -35,7 +35,6 @@ signUpBtn.addEventListener("click", function () {
       for (var i = 0; i < usersList.length; i++) {
         if (registerUser.email === usersList[i].email) {
           emailExist = true;
-          console.log("Email is already used");
           break;
         }
       }

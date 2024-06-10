@@ -11,11 +11,11 @@ function isLoginFormEmpty() {
 
 loginBtn.addEventListener("click", function () {
   var isFormEmpty = isLoginFormEmpty();
-  if (!isFormEmpty) {
-    document.querySelector("#warnMsg").classList.replace("d-none", "d-block");
+  if (isFormEmpty) {
+    warnMsg.classList.toggle("d-none");
+    warnMsg.textContent = "All inputs are required";
   } else {
-    document.querySelector("#warnMsg").classList.replace("d-block", "d-none");
-
+    warnMsg.classList.toggle("d-none");
     if (usersList !== null) {
       for (var i = 0; i < usersList.length; i++) {
         if (
