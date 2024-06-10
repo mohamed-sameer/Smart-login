@@ -13,7 +13,6 @@ if (loggedUser != null) {
     window.location.href = "../index.html";
   });
 } else {
-  console.log(window.location.pathname);
   if (window.location.pathname == "/pages/home.html") {
     bodyHtml.classList.add("d-none");
     window.location.href = "../pages/404.html";
